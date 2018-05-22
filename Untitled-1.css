@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(35, 119, 153);
+}
+
+
+/* h1 {
+    color: darkgreen;
+}
+
+p {
+    color: rgb(102, 0, 128);
+} */
+
+.allesGelb {
+    background-color: yellow
+}
+
+#ID1 {
+    text-decoration: underline;
+    background-color: yellow
+}
