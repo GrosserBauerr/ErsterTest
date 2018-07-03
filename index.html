@@ -1,31 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>mein Dokument </title>
-    <link rel="stylesheet" href="Untitled-1.css">
+    <title>Das ist ein Google-Maps-Test</title>
 </head>
 
+
 <body>
-    <div style="background-color:white; color:green; padding:20px;border: 10px solid red">
-        <h1>Eine grüne Überschrift innerhalb eines div-Elements</h1>
-        <p>Hier ein Absatz innerhalb desselben div-Elements</p>
-    </div>
-    <h1 class="allesGelb">Testfarbe</h1>
 
-    <a href="http:/youtube.com">
-        <img src="harry-piotr-and-ron-wassil-31599403.png" width="2000" height="800">
-        <br>
-        <img src="500px-Dialog-information_on.svg.png"><img>
-        <br>
-        <img src="3-format43.jpg"><img>
-        <br>
+    <h3>Google Maps Demo</h3>
+    <div id="googleMap" style="width:100%;height:400px;"></div>
+    <script>
+        function initMap() {
+            var thbingen = {
+                lat: 49.952381,
+                lng: 7.925409
+            };
+            var mapProp = {
+                center: new google.maps.LatLng(thbingen),
+                zoom: 15,
+                backgroundColor: 'red',
+                disableDoubleClickZoom: true,
+            };
+            var meineKarte = new google.maps.Map(document.getElementById('googleMap'), mapProp);
+            var marker = new google.maps.Marker({
+                position: thbingen,
+                map: meineKarte
+            });
+            marker.addListener('click', function() {
+                meineKarte.setZoom(16);
+                meineKarte.setCenter(marker.getPosition());
+            });
+            meineKarte.addListener('center_changed', function() {
+                window.setTimeout(function() {
+                    meineKarte.panTo(marker.getPosition());
+                }, 3000);
+            });
+        }
+    </script>
+    <script src="geoloc.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA84ZrNTtrdRZNl0E8l5PFlyDo59riRPCw&callback=initMap">
+    </script>
+    <p id="geoSupported"> Info über Geolocation</p>
+    <button onclick="holePosition()">Hole Position</button>
+    <h2 id="breite"> Breitengrad</h2>
+    <h2 id="laenge"> Längengrad</h2>
 
-
-    </a>
-    <p id=ID1> Besondserer Text</p>
-    <p>normaler Text</p>
 </body>
 
 </html>
